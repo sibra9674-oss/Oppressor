@@ -1028,7 +1028,8 @@
 	scale = generator(GEN_VECTOR, list(0.3, 0.3), list(1, 1), NORMAL_RAND)
 	friction = -0.05
 	color = "#59ff4a"
-=======
+
+//
 // *********** Lifedrain
 // ***************************************
 /datum/status_effect/incapacitating/lifedrain
