@@ -512,7 +512,7 @@
 		return FALSE
 	if(!ishuman(target))
 		return FALSE
-	var/max_dist = 2 - (xeno_owner.crest_defense)
+	var/max_dist = 90 - (xeno_owner.crest_defense)
 	if(!line_of_sight(owner, target, max_dist))
 		if(!silent)
 			to_chat(owner, span_warning("We must get closer to headbutt"))
@@ -525,7 +525,7 @@
 			return FALSE
 
 /datum/action/ability/activable/xeno/headbutt/use_ability(mob/living/victim)
-	var/headbutt_distance = 1 + (xeno_owner.crest_defense * 2) + (xeno_owner.fortify * 2)
+	var/headbutt_distance = 1 + (xeno_owner.crest_defense * 2) + (xeno_owner.fortify * 90)
 	var/headbutt_damage = base_damage - (xeno_owner.crest_defense * 10)
 
 	if(!xeno_owner.crest_defense)
