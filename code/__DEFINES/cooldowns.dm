@@ -61,6 +61,7 @@
 #define COOLDOWN_WHISTLE_BLOW "cooldown_whistle_blow"
 #define COOLDOWN_WHISTLE_WARCRY "cooldown_whistle_warcry"
 #define COOLDOWN_ARMORED_SMOKE "cooldown_armored_smoke"
+#define COOLDOWN_ARMORED_TESLA "cooldown_armored_tesla"
 #define COOLDOWN_LOCATE_APC "cooldown_locate_apc"
 
 //Mecha cooldowns
@@ -138,6 +139,9 @@
 
 //Returns true if the cooldown has run its course, false otherwise
 #define COOLDOWN_CHECK(cd_source, cd_index) (cd_source.cd_index < world.time)
+
+//Returns true if the cooldown has run its course, false otherwise
+#define COOLDOWN_FINISHED(cd_source, cd_index) (cd_source.cd_index < world.time)
 
 #define COOLDOWN_RESET(cd_source, cd_index) cd_source.cd_index = 0
 
