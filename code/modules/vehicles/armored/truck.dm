@@ -1,6 +1,6 @@
 /obj/vehicle/sealed/armored/multitile/mrap
-	name = "\improper MRAP - Sambar"
-	desc = "An unarmed MRAP designed to transport troops across the battlefield quickly and safely."
+	name = "\improper ТУЗ 420 'Татарин'"
+	desc = "Невооруженный бронированный автомобиль Татарин, предназначенный для быстрой и безопасной транспортировки войск через поле боя.."
 	icon = 'icons/obj/armored/2x3/apc.dmi'
 	icon_state = "apc"
 	damage_icon_path = 'icons/obj/armored/2x3/apc_damage_overlay.dmi'
@@ -14,6 +14,8 @@
 	turret_icon = null
 	pixel_x = -24
 	pixel_y = -32
+	pixel_z = 0
+	pixel_w = 0
 	max_integrity = 900
 	soft_armor = list(MELEE = 50, BULLET = 100 , LASER = 90, ENERGY = 60, BOMB = 60, BIO = 100, FIRE = 50, ACID = 50)
 	hard_armor = list(MELEE = 0, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 0, BIO = 20, FIRE = 0, ACID = 0)
