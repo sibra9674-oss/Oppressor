@@ -487,9 +487,6 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(
 	staggerstun(target_mob, proj, max_range, 0, knockdown_duration, stagger_duration, slowdown_stacks, knockback)
 	target_carbon.apply_status_effect(STATUS_EFFECT_SHATTER, shatter_duration)
 
-///Vehicle damage dealt, for the globadiers primo, Acid Rocket
-#define XADAR_VEHICLE_DAMAGE 117 /// 1.3 * 90
-
 /datum/ammo/xeno/acid/heavy/scatter/drop_nade(turf/target_turf) //Leaves behind an acid pool; defaults to 1-3 seconds.
 	if(target_turf.density)
 		return
