@@ -132,6 +132,9 @@
 #define COMSIG_MECHABILITY_RELOAD "mechability_reload"
 #define COMSIG_MECHABILITY_TOGGLE_ACTUATORS "mechability_toggle_actuators"
 
+#define COMSIG_VEHICLEABILITY_TESLA "vehicleability_tesla"
+#define COMSIG_VEHICLEABILITY_SMOKE "vehicleability_smoke"
+
 #define COMSIG_ACTION_EXCLUSIVE_TOGGLE "action_exclusive_toggle"
 
 // xeno abilities for keybindings
