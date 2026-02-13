@@ -1055,13 +1055,11 @@
 	log_directed_talk(xeno_owner, xeno_owner, msg, LOG_SAY, "psychic whisper")
 
 	// font-family: 'Georgia' или 'Courier New' придаст "голосу в голове" особый вид
-	var/styled_msg = "<span style='color: #ff00ff; font-family: Georgia, serif; text-shadow: 0 0 8px #ff00ff, 1px 1px 2px #000000; font-size: 1.2em;'><b>[xeno_owner] транслирует ментально: \"[msg]\"</b></span>"
+	var/styled_msg = "<span style='color: #ff00ff; font-family: Georgia, serif; text-shadow: 0 0 8px #ff00ff, 1px 1px 2px #000000; font-size: 1.2em;'><b>[xeno_owner] Психически шепчет: \"[msg]\"</b></span>"
 
-	// Это сообщение будет на английском/русском для ВСЕХ, без перевода в шипение
 	for(var/mob/M in viewers(7, xeno_owner))
 		to_chat(M, styled_msg)
 
-	// Используем специальный флаг, чтобы не было "шипения"
 	flick("purple_thought_bubble", xeno_owner.chat_color)
 
 	message_admins("[key_name_admin(xeno_owner)] has psychic whispered: \"[msg]\" at [ADMIN_VERBOSEJMP(xeno_owner)].")
