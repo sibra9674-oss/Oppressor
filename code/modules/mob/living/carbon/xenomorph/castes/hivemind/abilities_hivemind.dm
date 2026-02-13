@@ -221,7 +221,7 @@ GLOBAL_LIST_INIT(hivemind_resin_images_list, list(
 	action_icon_state = "queen_order"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	ability_cost = 400
-	cooldown_duration = 240 SECONDS
+	cooldown_duration = 600 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_QUEEN_HIVE_MESSAGE,
 	)
