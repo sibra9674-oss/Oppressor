@@ -58,6 +58,7 @@
 		/datum/action/ability/xeno_action/psy_gain/hivemind,
 		/datum/action/ability/activable/xeno/psychic_cure/queen_give_heal/hivemind,
 		/datum/action/ability/activable/xeno/transfer_plasma/hivemind,
+		/datum/action/ability/xeno_action/hive_message/sector_broadcast,
 		/datum/action/ability/xeno_action/pheromones/hivemind,
 		/datum/action/ability/xeno_action/pheromones/emit_recovery,
 		/datum/action/ability/xeno_action/pheromones/emit_warding,

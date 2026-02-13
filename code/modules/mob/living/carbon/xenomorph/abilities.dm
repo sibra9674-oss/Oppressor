@@ -1061,8 +1061,8 @@
 	for(var/mob/M in viewers(7, xeno_owner))
 		to_chat(M, styled_msg)
 
-	// Используем специальный флаг, чтобы не было "шипения" (зависит от версии кода, но обычно say_test или просто баббл)
-	flick("purple_thought_bubble", xeno_owner.chat_color) // Если в коде есть спрайты бабблов
+	// Используем специальный флаг, чтобы не было "шипения"
+	flick("purple_thought_bubble", xeno_owner.chat_color)
 
 	message_admins("[key_name_admin(xeno_owner)] has psychic whispered: \"[msg]\" at [ADMIN_VERBOSEJMP(xeno_owner)].")
 

@@ -214,3 +214,61 @@ GLOBAL_LIST_INIT(hivemind_resin_images_list, list(
 		GLOB.round_statistics.psypoints_from_hivemind += 100
 	succeed_activate()
 	add_cooldown()
+
+/datum/action/ability/xeno_action/hive_message/sector_broadcast
+	name = "Hivemind Voice"
+	desc = "Транслирует волю Улья всем существам в текущем секторе."
+	action_icon_state = "queen_order"
+	action_icon = 'icons/Xeno/actions/general.dmi'
+	ability_cost = 400
+	cooldown_duration = 240 SECONDS
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_XENOABILITY_QUEEN_HIVE_MESSAGE,
+	)
+	use_state_flags = ABILITY_USE_LYING
+
+/datum/action/ability/xeno_action/hive_message/sector_broadcast/action_activate()
+	var/input = stripped_multiline_input(xeno_owner, "Максимальная длина: [MAX_BROADCAST_LEN]", "Голоса в голове", "", MAX_BROADCAST_LEN, TRUE)
+	input = capitalize(trim(replacetext(input, "\n", " ")))
+	if(!input)
+		return
+
+	var/filter_result = is_ic_filtered(input)
+	if(filter_result)
+		to_chat(xeno_owner, span_warning("That announcement contained a word prohibited in IC chat!"))
+		return FALSE
+	if(NON_ASCII_CHECK(input))
+		to_chat(xeno_owner, span_warning("That announcement contained characters prohibited in IC chat!"))
+		return FALSE
+
+	log_game("[key_name(xeno_owner)] has messaged the sector with: \"[input]\"")
+
+	var/queens_word = HUD_ANNOUNCEMENT_FORMATTING("Приказ Разума Улья", input, CENTER_ALIGN_TEXT)
+	var/sound/queen_sound = sound(SFX_QUEEN, channel = CHANNEL_ANNOUNCEMENTS)
+	var/sound/king_sound = sound('sound/voice/alien/xenos_roaring.ogg', channel = CHANNEL_ANNOUNCEMENTS)
+
+	var/my_z = xeno_owner.z
+
+	// Рассылка ВСЕМ игрокам в секторе (Z-уровень)
+	for(var/mob/M in world)
+		if(M.z == my_z && M.client)
+			// Все (и люди, и ксеносы) получают стандартный алерт
+			to_chat(M, assemble_alert(
+				title = "Вы слышите голос в вашем разуме",
+				subtitle = "Голос [xeno_owner.name]",
+				message = input,
+				color_override = "purple"
+			))
+
+			// Ксеноморфы дополнительно получают текст на экран и звук
+			if(isxeno(M))
+				var/mob/living/carbon/xenomorph/X = M
+				switch(xeno_owner.caste_base_type)
+					if(/datum/xeno_caste/queen, /datum/xeno_caste/shrike)
+						SEND_SOUND(X, queen_sound)
+					if(/datum/xeno_caste/king)
+						SEND_SOUND(X, king_sound)
+				X.play_screen_text(queens_word, /atom/movable/screen/text/screen_text/queen_order)
+
+	succeed_activate()
+	add_cooldown()
